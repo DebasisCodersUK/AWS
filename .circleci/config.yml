@@ -14,7 +14,6 @@ jobs:
       - run:
           name: Deploy to S3 bucket
           command: aws s3 sync . s3://debasiscodersuk/${CIRCLE_BRANCH} --exclude '.circleci/*' --exclude '.git/*'  
-
 workflows:
   version: 2
   build-deploy:
