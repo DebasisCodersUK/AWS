@@ -6,11 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Branch name
+          command: echo "${CIRCLE_BRANCH}"
+      - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
           name: Deploy to S3 bucket
-          command: aws s3 sync . s3://debasiscodersuk/ --exclude '.circleci/*' --exclude '.git/*'  
+          command: aws s3 sync . s3://debasiscodersuk/${CIRCLE_BRANCH} --exclude '.circleci/*' --exclude '.git/*'  
 
 workflows:
   version: 2
